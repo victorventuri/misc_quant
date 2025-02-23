@@ -1,0 +1,10 @@
+Metadata-Version: 2.2
+Name: quant_learn
+Version: 0.0.1
+Summary: collection of scripts to better understand concepts in quant finance
+Author: Victor Venturi
+Requires-Python: >=3.11
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: yfinance
+Requires-Dist: matplotlib
