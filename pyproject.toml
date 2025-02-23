@@ -1,0 +1,17 @@
+[project]
+name = "quant_learn"
+version = "0.0.1"
+description = "collection of scripts to better understand concepts in quant finance"
+requires-python = ">=3.11"
+authors = [
+    {name = "Victor Venturi"},
+]
+dependencies = [
+    "numpy",
+    "scipy",
+    "yfinance",
+    "matplotlib"
+]
+
+[tool.setuptools.packages.find]
+include = ["quant_learn*"]
