@@ -1,28 +1,26 @@
 """
-Scripts to simulate Itô process
+Scripts to simulate Itô process.
+
+The Itô process is effectively a generalization of the Wiener process, in which the drift and diffusion can depend on
+both the present time and on the present value of the process.
+
+Similarly, it resembles the Gaussian process we already define, but it scales the variance of the stochastic steps by dt
 """
-from typing import Optional, Union, List, Tuple
+from typing import Union
 
 import numpy as np
 
-from .wiener import GeneralizedWiener as Wiener
+from .gaussian_random_walk import GaussianRandomWalk
 
 
-class ItoProcess1D():
+class ItoProcess(GaussianRandomWalk):
     """
     Base definition of an Itô process
-
-    Args:
-        seed: seed to be used in random number generator
     """
-    def __init__(self,
-                 seed: int) -> None:
-        self.seed = seed
 
-    @property
-    def seed(self) -> int:
-        return self.wiener.seed
+    def get_drift(self, time: float, x: float) -> Union[float, np.ndarray]:
+        return self._drift(time=time, x=x)
 
-    @seed.setter
-    def seed(self, value: int) -> None:
-        self.wiener = Wiener(seed=value)
+    def _get_step_cov(self, time: float, x: float) -> Union[float, np.ndarray]:
+        dt = self.dt
+        return dt * np.atleast_2d(self._stoc_step_cov(time=time, x=x))

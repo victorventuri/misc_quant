@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-class GeneralizedRandomWalk():
+class GeneralizedMarkovRandomWalk():
     """
     Base class for a generalized random walk x(t), where
 
@@ -84,7 +84,7 @@ class GeneralizedRandomWalk():
         # Step
         for t in time_stamps[:-1]:
             drift = self.get_drift(time=t, x=base_values[-1])
-            diffusion = self.get_stochastic_step(time=t, x=base_values)
+            diffusion = self.get_stochastic_step(time=t, x=base_values[-1])
             dx = (drift * dt) + diffusion
             base_values += [base_values[-1] + dx]
         # Convert to numpy array

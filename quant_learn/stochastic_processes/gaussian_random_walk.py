@@ -5,10 +5,10 @@ from typing import Callable, Union
 
 import numpy as np
 
-from . import GeneralizedRandomWalk
+from . import GeneralizedMarkovRandomWalk
 
 
-class GaussianRandomWalk(GeneralizedRandomWalk):
+class GaussianRandomWalk(GeneralizedMarkovRandomWalk):
     """
     Base definition for a Gaussian random walk, in which the infinitesimal stochastic step taken is a zero-mean Gaussian
     random variable with covariance scaled by the stochastic stepper function
