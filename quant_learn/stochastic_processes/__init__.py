@@ -2,7 +2,7 @@
 Collection of scripts to simulate stochastic processes
 """
 from abc import abstractmethod
-from typing import Callable, List, Tuple, Union
+from typing import Callable, Dict, List, Tuple, Union
 from copy import deepcopy
 
 import numpy as np
@@ -96,18 +96,22 @@ class GeneralizedMarkovRandomWalk():
 
         return time_stamps, base_values
 
-    def plot_runs(self, **kwargs) -> Tuple[plt.Figure, plt.Axes]:
+    def plot_runs(self, subplots_args: Dict = {}, plot_args: Dict = {}) -> Tuple[plt.Figure, plt.Axes]:
         """
-        Plot all runs. Keyword arguments are passed to `plt.subplots(**kwargs)`
+        Plot all runs.
+
+        Args:
+            subplots_args: keyword arguments to be used when initializing figure
+            plot_args: keyword arguments to be given to plot calls
         """
         if len(self._simulation_history) == 0.:
             raise ValueError('No runs have been simulated!')
 
-        fig, axes = plt.subplots(1, 1, **kwargs)
+        fig, axes = plt.subplots(1, 1, **subplots_args)
         axes.set_xlabel('Time')
         axes.set_ylabel('Value')
 
         for time, vals in self._simulation_history:
-            axes.plot(time, vals)
+            axes.plot(time, vals, **plot_args)
 
         return fig, axes
