@@ -17,7 +17,6 @@ class ItoProcess(GaussianRandomWalk):
     """
     Base definition of an Itô process
     """
-
     def get_drift(self, time: float, x: float) -> Union[float, np.ndarray]:
         return self._drift(time=time, x=x)
 

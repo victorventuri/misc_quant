@@ -29,6 +29,12 @@ from .gaussian_random_walk import GaussianRandomWalk
 class GeneralizedWiener(GaussianRandomWalk):
     """
     Base definition of a generalized Wiener process
+
+    Args:
+        infinitesimal_time_interval: infinitesimal time interval to be used in simulations
+        drift: drift function
+        stochastic_stepper: function that computes the covariance for the stochastic step (but not the dt term!!)
+        seed: value used to seed the random number generator
     """
     def __init__(self,
                  infinitesimal_time_interval: float,
