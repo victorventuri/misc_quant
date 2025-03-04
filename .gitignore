@@ -4,5 +4,8 @@
 # Pycache
 *__pycache*
 
+# DS_Store
+.DS_Store
+
 # Resources (books, links, etc.)
 useful_resources/
