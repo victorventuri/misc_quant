@@ -52,7 +52,7 @@ def black_scholes_value(strike_price: float,
 
     # Main calculations
     call_value = (expected_S_T * gaussian.cdf_1d(value=d_plus)) - (strike_price * gaussian.cdf_1d(value=d_minus))
-    put_value = (strike_price * gaussian.cdf_1d(value=-d_plus)) - (expected_S_T * gaussian.cdf_1d(value=-d_minus))
+    put_value = (strike_price * gaussian.cdf_1d(value=-d_minus)) - (expected_S_T * gaussian.cdf_1d(value=-d_plus))
     # Discount them to present value
     call_value *= np.exp(-interest_rate * time_to_maturity)
     put_value *= np.exp(-interest_rate * time_to_maturity)
