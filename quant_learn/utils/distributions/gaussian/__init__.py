@@ -19,7 +19,7 @@ def pdf_1d(value: Union[float, np.ndarray],
         std_dev: standard deviation of the distribution
 
     Returns:
-        CDF value(s) of the desired point(s)
+        PDF value(s) of the desired point(s)
     """
     prefactor = 1./(std_dev * np.sqrt(2 * np.pi))
     exp_factor = - np.power(value - mean, 2) / (2 * (std_dev ** 2))
